@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buckingham Ween – Electronic Press Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #f0e6c8;
+      --dark: #3a2208;
+      --brown: #2a1f0e;
+      --mustard: #c8960a;
+      --rust: #a63d1f;
+      --tan: #8b6f3e;
+      --paper: #e8d9b0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--dark);
+      color: var(--cream);
+      font-family: 'Courier Prime', monospace;
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* HERO */
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      background: radial-gradient(ellipse at center, #5a3410 0%, #3a2208 70%);
+      border-bottom: 3px solid var(--mustard);
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(200,150,10,0.03) 2px,
+        rgba(200,150,10,0.03) 4px
+      );
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--mustard);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 16vw, 14rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      text-shadow:
+        4px 4px 0 var(--rust),
+        8px 8px 0 rgba(166,61,31,0.4);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--mustard);
+      text-shadow:
+        4px 4px 0 #7a5a00,
+        8px 8px 0 rgba(122,90,0,0.4);
+    }
+
+    .tagline {
+      font-family: 'Special Elite', cursive;
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--tan);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.2s, blink 2s ease-in-out infinite 2s;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      border-bottom: 1px solid rgba(200,150,10,0.2);
+    }
+
+    .section-label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--mustard);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--mustard), transparent);
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #c8b98a;
+      max-width: 680px;
+    }
+
+    p + p {
+      margin-top: 1.2rem;
+    }
+
+    /* VIDEO */
+    .video-wrap {
+      margin-top: 2.5rem;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border: 2px solid var(--mustard);
+      box-shadow: 6px 6px 0 var(--rust);
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-caption {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--tan);
+      margin-top: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    /* SHOWS */
+    .show-card {
+      border: 1px solid rgba(200,150,10,0.35);
+      padding: 1.75rem 2rem;
+      margin-top: 1.5rem;
+      position: relative;
+      background: rgba(42,31,14,0.4);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .show-card:hover {
+      background: rgba(42,31,14,0.8);
+      border-color: var(--mustard);
+    }
+
+    .show-card::before {
+      content: '▶';
+      position: absolute;
+      left: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--mustard);
+      font-size: 0.6rem;
+    }
+
+    .show-date {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--mustard);
+      letter-spacing: 0.05em;
+    }
+
+    .show-venue {
+      font-family: 'Special Elite', cursive;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-top: 0.25rem;
+    }
+
+    .show-location {
+      font-size: 0.85rem;
+      color: var(--tan);
+      margin-top: 0.25rem;
+      letter-spacing: 0.1em;
+    }
+
+    .show-tag {
+      display: inline-block;
+      background: rgba(200,150,10,0.2);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      margin-top: 0.75rem;
+      margin-right: 0.5rem;
+      text-transform: uppercase;
+      color: var(--mustard);
+    }
+
+    .show-description {
+      font-size: 0.9rem;
+      color: #a8947a;
+      margin-top: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* DISCOGRAPHY */
+    .album {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border: 1px solid rgba(200,150,10,0.25);
+      background: rgba(42,31,14,0.25);
+    }
+
+    .album-cover {
+      position: relative;
+      aspect-ratio: 1;
+      border: 1px solid rgba(200,150,10,0.4);
+      overflow: hidden;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .album-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .album-info h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .album-info p {
+      font-size: 0.95rem;
+    }
+
+    .album-info p + p {
+      margin-top: 0.8rem;
+    }
+
+    .track-list {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(200,150,10,0.2);
+    }
+
+    .track {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+      color: #a8947a;
+      border-bottom: 1px solid rgba(200,150,10,0.1);
+    }
+
+    .track-number {
+      font-weight: 700;
+      color: var(--mustard);
+      margin-right: 1rem;
+      min-width: 2rem;
+    }
+
+    .track-duration {
+      font-family: 'Courier Prime', monospace;
+      color: var(--tan);
+      margin-left: 1rem;
+    }
+
+    /* MEDIA */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .media-item {
+      border: 1px solid rgba(200,150,10,0.3);
+      overflow: hidden;
+      background: rgba(42,31,14,0.35);
+      padding: 1.5rem;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .media-item:hover {
+      border-color: var(--mustard);
+      background: rgba(42,31,14,0.6);
+    }
+
+    .media-item h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .media-item p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .media-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--mustard);
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .media-link:hover {
+      background: #e0a818;
+      transform: scale(1.05);
+    }
+
+    /* MERCH */
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .merch-item {
+      border: 1px solid rgba(200,150,10,0.3);
+      padding: 1rem;
+      text-align: center;
+      background: rgba(42,31,14,0.3);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .merch-item:hover {
+      border-color: var(--mustard);
+      background: rgba(42,31,14,0.5);
+    }
+
+    .merch-item img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 1px solid rgba(200,150,10,0.2);
+      margin-bottom: 1rem;
+    }
+
+    .merch-item h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .merch-price {
+      font-family: 'Courier Prime', monospace;
+      font-size: 1.1rem;
+      color: var(--mustard);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .merch-button {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: var(--rust);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .merch-button:hover {
+      background: #c54f2f;
+      transform: scale(1.05);
+    }
+
+    /* CONTACT/FOOTER */
+    footer {
+      background: rgba(0,0,0,0.3);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(200,150,10,0.2);
+    }
+
+    .contact-text {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #c8b98a;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--mustard);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--cream);
+    }
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buckingham Ween – Electronic Press Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #f0e6c8;
+      --dark: #3a2208;
+      --brown: #2a1f0e;
+      --mustard: #c8960a;
+      --rust: #a63d1f;
+      --tan: #8b6f3e;
+      --paper: #e8d9b0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--dark);
+      color: var(--cream);
+      font-family: 'Courier Prime', monospace;
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* HERO */
+    header {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      background: radial-gradient(ellipse at center, #5a3410 0%, #3a2208 70%);
+      border-bottom: 3px solid var(--mustard);
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(200,150,10,0.03) 2px,
+        rgba(200,150,10,0.03) 4px
+      );
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--mustard);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 16vw, 14rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      text-shadow:
+        4px 4px 0 var(--rust),
+        8px 8px 0 rgba(166,61,31,0.4);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--mustard);
+      text-shadow:
+        4px 4px 0 #7a5a00,
+        8px 8px 0 rgba(122,90,0,0.4);
+    }
+
+    .tagline {
+      font-family: 'Special Elite', cursive;
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--tan);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.2s, blink 2s ease-in-out infinite 2s;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      border-bottom: 1px solid rgba(200,150,10,0.2);
+    }
+
+    .section-label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--mustard);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--mustard), transparent);
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #c8b98a;
+      max-width: 680px;
+    }
+
+    p + p {
+      margin-top: 1.2rem;
+    }
+
+    /* VIDEO */
+    .video-wrap {
+      margin-top: 2.5rem;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border: 2px solid var(--mustard);
+      box-shadow: 6px 6px 0 var(--rust);
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-caption {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--tan);
+      margin-top: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    /* SHOWS */
+    .show-card {
+      border: 1px solid rgba(200,150,10,0.35);
+      padding: 1.75rem 2rem;
+      margin-top: 1.5rem;
+      position: relative;
+      background: rgba(42,31,14,0.4);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .show-card:hover {
+      background: rgba(42,31,14,0.8);
+      border-color: var(--mustard);
+    }
+
+    .show-card::before {
+      content: '▶';
+      position: absolute;
+      left: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--mustard);
+      font-size: 0.6rem;
+    }
+
+    .show-date {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--mustard);
+      letter-spacing: 0.05em;
+    }
+
+    .show-venue {
+      font-family: 'Special Elite', cursive;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-top: 0.25rem;
+    }
+
+    .show-location {
+      font-size: 0.85rem;
+      color: var(--tan);
+      margin-top: 0.25rem;
+      letter-spacing: 0.1em;
+    }
+
+    .show-tag {
+      display: inline-block;
+      background: rgba(200,150,10,0.2);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      margin-top: 0.75rem;
+      margin-right: 0.5rem;
+      text-transform: uppercase;
+      color: var(--mustard);
+    }
+
+    .show-description {
+      font-size: 0.9rem;
+      color: #a8947a;
+      margin-top: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* DISCOGRAPHY */
+    .album {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border: 1px solid rgba(200,150,10,0.25);
+      background: rgba(42,31,14,0.25);
+    }
+
+    .album-cover {
+      position: relative;
+      aspect-ratio: 1;
+      border: 1px solid rgba(200,150,10,0.4);
+      overflow: hidden;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .album-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .album-info h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .album-info p {
+      font-size: 0.95rem;
+    }
+
+    .album-info p + p {
+      margin-top: 0.8rem;
+    }
+
+    .track-list {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(200,150,10,0.2);
+    }
+
+    .track {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+      color: #a8947a;
+      border-bottom: 1px solid rgba(200,150,10,0.1);
+    }
+
+    .track-number {
+      font-weight: 700;
+      color: var(--mustard);
+      margin-right: 1rem;
+      min-width: 2rem;
+    }
+
+    .track-duration {
+      font-family: 'Courier Prime', monospace;
+      color: var(--tan);
+      margin-left: 1rem;
+    }
+
+    /* MEDIA */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .media-item {
+      border: 1px solid rgba(200,150,10,0.3);
+      overflow: hidden;
+      background: rgba(42,31,14,0.35);
+      padding: 1.5rem;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .media-item:hover {
+      border-color: var(--mustard);
+      background: rgba(42,31,14,0.6);
+    }
+
+    .media-item h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .media-item p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .media-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--mustard);
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .media-link:hover {
+      background: #e0a818;
+      transform: scale(1.05);
+    }
+
+    /* MERCH */
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .merch-item {
+      border: 1px solid rgba(200,150,10,0.3);
+      padding: 1rem;
+      text-align: center;
+      background: rgba(42,31,14,0.3);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .merch-item:hover {
+      border-color: var(--mustard);
+      background: rgba(42,31,14,0.5);
+    }
+
+    .merch-item img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 1px solid rgba(200,150,10,0.2);
+      margin-bottom: 1rem;
+    }
+
+    .merch-item h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .merch-price {
+      font-family: 'Courier Prime', monospace;
+      font-size: 1.1rem;
+      color: var(--mustard);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .merch-button {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: var(--rust);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .merch-button:hover {
+      background: #c54f2f;
+      transform: scale(1.05);
+    }
+
+    /* CONTACT FORM */
+    .contact-section {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-form {
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-row label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mustard);
+    }
+
+    .form-row input,
+    .form-row textarea {
+      padding: 0.75rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(200,150,10,0.3);
+      color: var(--cream);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-row textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-row input::placeholder,
+    .form-row textarea::placeholder {
+      color: rgba(139,111,62,0.5);
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+      border-color: var(--mustard);
+    }
+
+    .contact-form button {
+      align-self: flex-start;
+      background: transparent;
+      border: 2px solid var(--mustard);
+      color: var(--mustard);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.15em;
+      padding: 0.6rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: var(--mustard);
+      color: var(--dark);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--tan);
+      opacity: 0.6;
+    }
+
+    /* QUOTE PULL */
+    blockquote {
+      border-left: 3px solid var(--mustard);
+      padding: 1rem 1.5rem;
+      margin: 2.5rem 0;
+      font-style: italic;
+      color: var(--tan);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .gallery {
+      position: relative;
+      aspect-ratio: 16/9;
+      border: 1px solid rgba(200,150,10,0.3);
+      margin: 2rem 0;
+      overflow: hidden;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .gallery-item {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-item.active { opacity: 1; }
+
+    .gallery-item img,
+    .gallery-item video {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
+
+    .gallery-controls {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 5;
+    }
+
+    .gallery-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(200,150,10,0.4);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .gallery-dot.active {
+      background: var(--mustard);
+    }
+
+    .gallery-controls .gallery-dot:hover {
+      background: var(--mustard);
+    }
+
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: var(--cream);
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.2s;
+      z-index: 5;
+    }
+
+    .gallery-nav:hover {
+      background: rgba(200,150,10,0.6);
+    }
+
+    .gallery-prev { left: 1rem; }
+    .gallery-next { right: 1rem; }
+
+    .gallery-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #0f0b07;
+    }
+
+    .gallery-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #0f0b07;
+      display: block;
+    }
+
+    .gallery-progress {
+      position: absolute;
+      top: 0.6rem;
+      left: 0.6rem;
+      right: 0.6rem;
+      display: flex;
+      gap: 3px;
+      z-index: 10;
+    }
+
+    .gallery-progress-bar {
+      flex: 1;
+      height: 2px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .gallery-progress-bar.done { background: rgba(255,255,255,0.9); }
+    .gallery-progress-bar.active { background: rgba(255,255,255,0.9); }
+
+    .gallery-tap-prev {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 40%;
+      cursor: pointer;
+      z-index: 9;
+    }
+
+    .gallery-tap-next {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 40%;
+      cursor: pointer;
+      z-index: 9;
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15,11,7,0.5);
+      border: 1px solid rgba(200,150,10,0.4);
+      color: var(--mustard);
+      font-size: 1.2rem;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s, color 0.2s;
+      line-height: 1;
+      border-radius: 50%;
+    }
+
+    .gallery-arrow:hover {
+      background: var(--mustard);
+      color: var(--dark);
+    }
+
+    .gallery-prev { left: 0.6rem; }
+    .gallery-next { right: 0.6rem; }
+
+    .gallery-counter {
+      position: absolute;
+      bottom: 0.6rem;
+      right: 0.9rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--tan);
+      background: rgba(15,11,7,0.6);
+      padding: 0.2rem 0.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      h1 { font-size: clamp(3.5rem, 12vw, 10rem); }
+      h2 { font-size: clamp(2rem, 6vw, 4rem); }
+      section { padding: 3.5rem 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: clamp(2.5rem, 10vw, 6rem); }
+      h2 { font-size: clamp(1.5rem, 5vw, 3rem); }
+      
+      .album {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .album-cover {
+        max-width: 200px;
+      }
+
+      .media-grid, .merch-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section { padding: 2.5rem 1.5rem; }
+      .show-card { padding: 1.2rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: clamp(1.8rem, 8vw, 3.5rem); }
+      h2 { font-size: clamp(1.2rem, 4vw, 2rem); }
+      p { font-size: 0.9rem; }
+      section { padding: 1.5rem 1rem; }
+      .show-card { padding: 1rem 1rem; }
+      .album { padding: 1rem; }
+      .gallery { aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Southern California&apos;s Premier</div>
+    <h1>WEEN<span>Tribute</span></h1>
+    <div class="tagline">A psychedelic rock tribute band</div>
+    <div class="scroll-hint">Scroll for more</div>
+  </header>
+
+  <section>
+    <div class="section-label">Bio</div>
+    <h2>All Hail the Boognish</h2>
+    <p>
+      Buckingham Ween is Southern California&apos;s premier tribute band dedicated to celebrating the experimental and wildly creative music of Ween. Founded in 2019, the band captures the raw energy, technical prowess, and comedic spirit of one of rock&apos;s most innovative acts.
+    </p>
+    <p>
+      With meticulous attention to both the studio versions and the improvisational live performances of Ween&apos;s vast catalog, Buckingham Ween delivers an authentic and passionate experience for longtime fans and curious listeners alike.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-label">Gallery</div>
+    <h2>Visual Archive</h2>
+    <div class="gallery">
+      <div class="gallery-progress">
+        <div class="gallery-progress-bar done"></div>
+        <div class="gallery-progress-bar active"></div>
+        <div class="gallery-progress-bar"></div>
+        <div class="gallery-progress-bar"></div>
+      </div>
+      
+      <div class="gallery-item active">
+        <video class="gallery-video" autoplay muted loop>
+          <source src="data:video/mp4;base64,AAAAIGZ0eXBpc20AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="gallery-item">
+        <img class="gallery-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Gallery item 2" />
+      </div>
+
+      <div class="gallery-item">
+        <img class="gallery-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Gallery item 3" />
+      </div>
+
+      <div class="gallery-item">
+        <img class="gallery-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Gallery item 4" />
+      </div>
+
+      <div class="gallery-controls">
+        <div class="gallery-dot active"></div>
+        <div class="gallery-dot"></div>
+        <div class="gallery-dot"></div>
+        <div class="gallery-dot"></div>
+      </div>
+
+      <div class="gallery-tap-prev"></div>
+      <div class="gallery-tap-next"></div>
+      <button class="gallery-arrow gallery-prev">❮</button>
+      <button class="gallery-arrow gallery-next">❯</button>
+      <div class="gallery-counter"><span class="gallery-current">1</span> / 4</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">About</div>
+    <h2>The Boognish Awaits</h2>
+    <p>
+      Buckingham Ween is Southern California&apos;s premier tribute band celebrating the psychedelic rock genius of Ween. Known for their technical mastery and faithful interpretations, the band commands the stage with intensity and reverence for one of the most creative forces in modern rock.
+    </p>
+    <blockquote>
+      "The songs remain the same, but every note is a prayer to the Boognish." — Buckingham Ween
+    </blockquote>
+    <p>
+      From the whimsical pop confections of &quot;The Golden Eel&quot; to the devastating prog-metal of &quot;Transdermal Celebration&quot;, Buckingham Ween recreates the full spectrum of Ween&apos;s legendary output with passion, precision, and the playful spirit that defines the band&apos;s philosophy.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-label">Shows</div>
+    <h2>Tour Dates</h2>
+
+    <div class="show-card">
+      <div class="show-date">MAR 28</div>
+      <div class="show-venue">The Roxy</div>
+      <div class="show-location">West Hollywood, CA</div>
+      <div class="show-tag">SOLD OUT</div>
+      <div class="show-description">An unforgettable night of Ween classics performed with uncompromising dedication to the material.
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-date">APR 10</div>
+      <div class="show-venue">The Fonda Theatre</div>
+      <div class="show-location">Los Angeles, CA</div>
+      <div class="show-description">Extended set featuring deep cuts and rare live variations from across Ween&apos;s catalog.
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-date">APR 25</div>
+      <div class="show-venue">The Observatory</div>
+      <div class="show-location">Santa Ana, CA</div>
+      <div class="show-description">A special evening celebrating Ween&apos;s most experimental and avant-garde compositions.
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-date">MAY 15</div>
+      <div class="show-venue">The Palladium</div>
+      <div class="show-location">Hollywood, CA</div>
+      <div class="show-description">As part of the Spring Rock Fest. A comprehensive journey through Ween&apos;s discography.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Albums & Releases</div>
+    <h2>Discography</h2>
+
+    <div class="album">
+      <div class="album-cover">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Buckingham Ween - The Boognish Sessions" />
+      </div>
+      <div class="album-info">
+        <h3>The Boognish Sessions</h3>
+        <p><strong>Released:</strong> March 2023</p>
+        <p><strong>Format:</strong> Digital / CD / Vinyl</p>
+        <p>
+          Our debut album featuring 14 meticulously crafted arrangements of Ween&apos;s most beloved tracks. From the power-pop perfection of &quot;Chocolate Town&quot; to the devastating seven-minute odyssey of &quot;Buckingham Green.&quot;
+        </p>
+        <div class="track-list">
+          <div class="track"><span><span class="track-number">01</span> Buckingham Green</span><span class="track-duration">7:24</span></div>
+          <div class="track"><span><span class="track-number">02</span> Chocolate Town</span><span class="track-duration">3:15</span></div>
+          <div class="track"><span><span class="track-number">03</span> The Golden Eel</span><span class="track-duration">4:32</span></div>
+          <div class="track"><span><span class="track-number">04</span> Transdermal Celebration</span><span class="track-duration">6:18</span></div>
+          <div class="track"><span><span class="track-number">05</span> Baby Bitch</span><span class="track-duration">2:47</span></div>
+          <div class="track"><span><span class="track-number">06</span> Tried and True</span><span class="track-duration">5:43</span></div>
+          <div class="track"><span><span class="track-number">07</span> Flutes of Chi</span><span class="track-duration">4:01</span></div>
+          <div class="track"><span><span class="track-number">08</span> The Argus</span><span class="track-duration">5:19</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="album">
+      <div class="album-cover">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Buckingham Ween - Live at The Roxy" />
+      </div>
+      <div class="album-info">
+        <h3>Live at The Roxy</h3>
+        <p><strong>Released:</strong> September 2023</p>
+        <p><strong>Format:</strong> Digital / 2xCD</p>
+        <p>
+          Captured live during our sold-out run at The Roxy Theatre. This recording showcases the raw energy and technical prowess of Buckingham Ween in their element, with extended jams and improvisations throughout.
+        </p>
+        <div class="track-list">
+          <div class="track"><span><span class="track-number">01</span> Buckingham Green (Live)</span><span class="track-duration">10:04</span></div>
+          <div class="track"><span><span class="track-number">02</span> The Argus (Live)</span><span class="track-duration">9:47</span></div>
+          <div class="track"><span><span class="track-number">03</span> Transdermal Celebration (Live)</span><span class="track-duration">12:31</span></div>
+          <div class="track"><span><span class="track-number">04</span> Chocolate Town (Live)</span><span class="track-duration">6:12</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Connect</div>
+    <h2>Get in Touch</h2>
+
+    <div class="media-grid">
+      <div class="media-item">
+        <h3>Spotify</h3>
+        <p>
+          Listen to all of Buckingham Ween&apos;s recordings and playlists on Spotify.
+        </p>
+        <a href="#" class="media-link">Listen Now</a>
+      </div>
+
+      <div class="media-item">
+        <h3>Instagram</h3>
+        <p>
+          Follow us for tour updates, behind-the-scenes content, and live performance clips.
+        </p>
+        <a href="#" class="media-link">Follow</a>
+      </div>
+
+      <div class="media-item">
+        <h3>YouTube</h3>
+        <p>
+          Check out full live performances and exclusive video content from our shows.
+        </p>
+        <a href="#" class="media-link">Subscribe</a>
+      </div>
+
+      <div class="media-item">
+        <h3>Email</h3>
+        <p>
+          For booking inquiries and press inquiries, please reach out directly.
+        </p>
+        <a href="mailto:info@buckinghamween.com" class="media-link">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Contact</h2>
+    <form class="contact-form">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2026 Buckingham Ween &nbsp;—&nbsp; Southern California&apos;s Premier Ween Tribute
+  </footer>
+
+  <script>
+    const gallery = {
+      items: document.querySelectorAll('.gallery-item'),
+      dots: document.querySelectorAll('.gallery-dot'),
+      current: 0,
+      total: 0,
+      init() {
+        this.total = this.items.length;
+        this.setupControls();
+      },
+      setupControls() {
+        document.querySelector('.gallery-prev').addEventListener('click', () => this.prev());
+        document.querySelector('.gallery-next').addEventListener('click', () => this.next());
+        document.querySelector('.gallery-tap-prev').addEventListener('click', () => this.prev());
+        document.querySelector('.gallery-tap-next').addEventListener('click', () => this.next());
+        this.dots.forEach((dot, idx) => {
+          dot.addEventListener('click', () => this.goto(idx));
+        });
+      },
+      show(idx) {
+        this.items.forEach(item => item.classList.remove('active'));
+        this.dots.forEach(dot => dot.classList.remove('active'));
+        this.items[idx].classList.add('active');
+        this.dots[idx].classList.add('active');
+        document.querySelector('.gallery-current').textContent = idx + 1;
+      },
+      next() {
+        this.current = (this.current + 1) % this.total;
+        this.show(this.current);
+      },
+      prev() {
+        this.current = (this.current - 1 + this.total) % this.total;
+        this.show(this.current);
+      },
+      goto(idx) {
+        this.current = idx;
+        this.show(this.current);
+      }
+    };
+    gallery.init();
+  </script>
+</body>
+</html>
